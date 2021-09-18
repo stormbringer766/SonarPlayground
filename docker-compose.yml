@@ -1,0 +1,26 @@
+﻿version: '3.4'
+
+services:
+  db:
+    image: postgres    
+    restart: always
+    ports:
+      - "5432:5432"
+#    volumes:
+#      - ${pwd}/data:/var/lib/postgresql/data -d postgres
+    environment:
+      POSTGRES_PASSWORD: sonar
+      POSTGRES_USER: sonar
+      
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+  
+  sonar-console:
+    image: sonar-console
+    environment:
+      database:connectionString: "Host=db;Username=sonar;Password=sonar;Database=sonar"
+    depends_on:
+      - db
