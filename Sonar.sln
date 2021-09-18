@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sonar.Console", "Sonar.Console\Sonar.Console.csproj", "{5924052C-CB2A-49A6-90B6-2B93A0AFF6AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sonar.Console.Tests", "Sonar.Console.Tests\Sonar.Console.Tests.csproj", "{38179345-39F0-4963-AD8D-EB91F4A80FB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{6C8EEB90-1D5B-4F1F-A6F0-CAC395E83086}"
+ProjectSection(SolutionItems) = preProject
+	docker-compose.yml = docker-compose.yml
+	Dockerfile = Dockerfile
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5924052C-CB2A-49A6-90B6-2B93A0AFF6AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5924052C-CB2A-49A6-90B6-2B93A0AFF6AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5924052C-CB2A-49A6-90B6-2B93A0AFF6AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5924052C-CB2A-49A6-90B6-2B93A0AFF6AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38179345-39F0-4963-AD8D-EB91F4A80FB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38179345-39F0-4963-AD8D-EB91F4A80FB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38179345-39F0-4963-AD8D-EB91F4A80FB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38179345-39F0-4963-AD8D-EB91F4A80FB9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
