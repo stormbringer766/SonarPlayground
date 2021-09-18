@@ -18,12 +18,12 @@ namespace Sonar.Console.Application
             _logger = logger;
         }
 
-        public Task StartAsync(CancellationToken cancellationToken)
+        public async Task StartAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("Starting");
             // Didn't need to be a hosted service. There was no requirement for it to run more than once.
             using var scope = _services.CreateScope();
-            return scope.ServiceProvider.GetRequiredService<ICustomerMetricsProcessor>().RunAsync();
+            await scope.ServiceProvider.GetRequiredService<ICustomerMetricsProcessor>().RunAsync();
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
