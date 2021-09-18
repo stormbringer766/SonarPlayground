@@ -48,8 +48,8 @@ namespace Sonar.Console.Infrastructure.Database
             {
                 id = metric.Id,
                 customer_id = metric.CustomerId,
-                name = string.IsNullOrWhiteSpace(metric.Name) ? DBNull.Value : (object) metric.Name,
-                expression = string.IsNullOrWhiteSpace(metric.Expression) ? DBNull.Value : (object) metric.Expression
+                name = metric.Name,
+                expression = metric.Expression
             };
 
             await using var connection = new NpgsqlConnection(_connectionString);
