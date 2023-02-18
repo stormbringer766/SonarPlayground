@@ -3,32 +3,56 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
+resources:
+  repositories:
+    - repository: devops
+      type: github
+      endpoint: 'stormbringer766'
+      name: stormbringer766/devops
+
 trigger:
 - main
+- pr
 
-pool:
-  vmImage: 'windows-latest'
+jobs:
+  - template: templates/dot-net-core-build.yml@devops
+    parameters:
+      solution: 'Sonar.snl'
 
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+# pool:
+#   vmImage: 'ubuntu-latest'
 
-steps:
-- task: NuGetToolInstaller@1
+# variables:
+#   solution: '**/*.sln'
+#   buildPlatform: 'Any CPU'
+#   buildConfiguration: 'Release'
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
+# steps:
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=false /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+# - task: UseDotNet@2
+#   displayName: 'Use .NET SKD'
+#   inputs: 
+#     packageType: sdk
+#     version: 6.0.406
 
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+# - task: DotNetCoreCLI@2
+#   displayName: 'Restore'
+#   inputs:
+#     command: 'restore'
+
+# - task: DotNetCoreCLI@2
+#   displayName: 'build'
+#   inputs:
+#     solution: '$(solution)'
+#     command: 'build'
+#     arguments: '-c $(buildConfiguration) --no-restore'
+
+# - task: DotNetCoreCLI@2
+#   displayName: 'Run tests'
+#   inputs:
+#     command: 'test'
+#     arguments: '--collect:"XPlat Code Coverage" /p:exclude="*Tests.*"'
+
+    
+    
+    
